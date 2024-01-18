@@ -155,10 +155,11 @@ function draw_sky(context, w, h) {
     context.textBaseline = 'middle';
     context.fillStyle = '#888';
     context.font = '12px Sans-Serif';
-    context.fillText('N', (w - 10) / 2, 9);
-    context.fillText('S', (w - 10) / 2, h - 5);
-    context.fillText('E', 2, h / 2);
-    context.fillText('W', w - 14, h / 2 - 2);
+
+    context.fillText('北', (w - 10) / 2, 9);
+    context.fillText('南', (w - 10) / 2, h - 5);
+    context.fillText('东', 2, h / 2);
+    context.fillText('西', w - 14, h / 2 - 2);
 
     /* ---- stars */
     var len = star.length;
