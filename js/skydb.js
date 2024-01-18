@@ -2956,7 +2956,7 @@ var conname = [
     { pos: { ra: 4.552, dec: -0.988 }, abbrev: 'Ara', name: '天坛座' },
     { pos: { ra: 0.69, dec: 0.364 }, abbrev: 'Ari', name: '白羊座' },
     { pos: { ra: 1.592, dec: 0.733 }, abbrev: 'Aur', name: '御夫座' },
-    { pos: { ra: 3.852, dec: 0.545 }, abbrev: 'Boo', name: 'Bootes' },
+    { pos: { ra: 3.852, dec: 0.545 }, abbrev: 'Boo', name: '牧夫座' },
     { pos: { ra: 1.788, dec: -0.386 }, abbrev: 'CMa', name: '大犬座' },
     { pos: { ra: 1.97, dec: 0.113 }, abbrev: 'CMi', name: '小犬座' },
     { pos: { ra: 3.433, dec: 0.7 }, abbrev: 'CVn', name: '猎犬座' },
