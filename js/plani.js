@@ -266,9 +266,7 @@ function get_user_obs() {
 
     var n = Date.parse(dt.value);
     if (isNaN(n)) {
-        alert(
-            "Your browser doesn't think\n'" + dt.value + "'\nis a valid date."
-        );
+        alert('你的浏览器不认为「' + dt.value + '」是一个正确的时间');
         set_user_obs();
         return;
     }
