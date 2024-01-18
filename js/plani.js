@@ -105,10 +105,21 @@ function draw_moon(context) {
         16,
         16
     );
+    var specialName;
+    if (i == 0) specialName = '新月';
+    else if (i <= 6) specialName = '蛾眉月';
+    else if (i <= 8) specialName = '上弦月';
+    else if (i <= 13) specialName = '盈凸月';
+    else if (i <= 15) specialName = '满月';
+    else if (i <= 20) specialName = '亏凸月';
+    else if (i <= 22) specialName = '下弦月';
+    else if (i <= 28) specialName = '残月';
+    else specialName = '新月';
+
     context.globalCompositeOperation = 'lighter';
     context.fillStyle = '#FFF0E0';
     context.font = '12px Sans-Serif';
-    context.fillText('Moon', moon.pos.x + 8, moon.pos.y);
+    context.fillText(specialName, moon.pos.x + 8, moon.pos.y);
 }
 
 function draw_line(context, s1, s2) {

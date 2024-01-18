@@ -193,7 +193,7 @@ function find_planet(planet, earth, jd) {
     planet.hz = r * (planet.P[2] * cv + planet.Q[2] * sv);
 
     var dx, dy, dz;
-    if (planet.name != 'Earth') {
+    if (planet.name != '太阳') {
         dx = planet.hx - earth.hx;
         dy = planet.hy - earth.hy;
         dz = planet.hz - earth.hz;

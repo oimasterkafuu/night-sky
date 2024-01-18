@@ -3813,7 +3813,7 @@ var dso = [
 var planet = [
     {
         pos: { ra: 0, dec: 0 },
-        name: 'Mercury',
+        name: '水星',
         color: '#FFFFFF',
         a: 0.38709893,
         e: 0.20563069,
@@ -3825,7 +3825,7 @@ var planet = [
     },
     {
         pos: { ra: 0, dec: 0 },
-        name: 'Venus',
+        name: '金星',
         color: '#FFFFFF',
         a: 0.72333199,
         e: 0.00677323,
@@ -3837,7 +3837,7 @@ var planet = [
     },
     {
         pos: { ra: 0, dec: 0 },
-        name: 'Earth',
+        name: '太阳',
         color: '#FFFFFF',
         a: 1.00000011,
         e: 0.01671022,
@@ -3849,7 +3849,7 @@ var planet = [
     },
     {
         pos: { ra: 0, dec: 0 },
-        name: 'Mars',
+        name: '火星',
         color: '#FFFFFF',
         a: 1.52366231,
         e: 0.09341233,
@@ -3861,7 +3861,7 @@ var planet = [
     },
     {
         pos: { ra: 0, dec: 0 },
-        name: 'Jupiter',
+        name: '木星',
         color: '#FFFFFF',
         a: 5.20336301,
         e: 0.04839266,
@@ -3873,7 +3873,7 @@ var planet = [
     },
     {
         pos: { ra: 0, dec: 0 },
-        name: 'Saturn',
+        name: '土星',
         color: '#FFFFFF',
         a: 9.53707032,
         e: 0.0541506,
@@ -3885,7 +3885,7 @@ var planet = [
     },
     {
         pos: { ra: 0, dec: 0 },
-        name: '',
+        name: '天王星',
         color: '#FFFFFF',
         a: 19.19126393,
         e: 0.04716771,
@@ -3897,7 +3897,7 @@ var planet = [
     },
     {
         pos: { ra: 0, dec: 0 },
-        name: 'Neptune',
+        name: '海王星',
         color: '#FFFFFF',
         a: 30.06896348,
         e: 0.00858587,
@@ -3909,7 +3909,7 @@ var planet = [
     },
     {
         pos: { ra: 0, dec: 0 },
-        name: 'Pluto',
+        name: '冥王星',
         color: '#FFFFFF',
         a: 39.48168677,
         e: 0.24880766,
