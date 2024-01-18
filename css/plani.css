@@ -1,20 +1,21 @@
-
 #main {
-   text-align: center;
+    text-align: center;
 }
 
 .unsupported {
-   font-family: Helvetica;
-   color: #F44;
+    font-family: Helvetica;
+    color: #f44;
 }
 
 table {
-   width: 75%;
-   margin: 1.5em auto 1.5em auto;
-   text-align: center;
-   font-family: Helvetica;
-   color: #A98;
+    width: 75%;
+    margin: 1.5em auto 1.5em auto;
+    text-align: center;
+    font-family: Helvetica;
+    color: #a98;
 }
-#planicanvas{ 
-  width: 44%;
-  height:44%;
+
+#planicanvas {
+    width: 44%;
+    height: 44%;
+}
