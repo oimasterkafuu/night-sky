@@ -322,10 +322,12 @@ function getIPGeoPos() {
         })
         .then(function (data) {
             console.log(data);
-            now.setLatDegrees(parseFloat(data.loca.latitude));
-            now.setLonDegrees(parseFloat(data.loca.longitude));
-            set_user_obs();
-            refresh();
+            setTimeout(function () {
+                now.setLatDegrees(parseFloat(data.loca.latitude));
+                now.setLonDegrees(parseFloat(data.loca.longitude));
+                set_user_obs();
+                refresh();
+            }, 1500);
         });
 }
 
