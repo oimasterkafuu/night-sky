@@ -26,7 +26,7 @@ function draw_planet(context, p) {
     draw_star(context, p);
     context.fillStyle = p.color;
     context.font = '12px 宋体,宋体-简';
-    context.fillText(name, p.pos.x + 5, p.pos.y);
+    context.fillText(p.name, p.pos.x + 5, p.pos.y);
 }
 
 function draw_star_label(context, p) {
