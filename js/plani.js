@@ -316,6 +316,17 @@ function canvasApp() {
 }
 
 function getIPGeoPos() {
+    if (localStorage.getItem('geopos')) {
+        setTimeout(function () {
+            var geopos = localStorage.getItem('geopos');
+            geopos = JSON.parse(geopos);
+            now.setLatDegrees(geopos.latitude);
+            now.setLonDegrees(geopos.longitude);
+            set_user_obs();
+            refresh();
+        }, 1500);
+        return;
+    }
     fetch('https://ip.oimaster.top/')
         .then(function (response) {
             return response.json();
@@ -334,6 +345,13 @@ function getIPGeoPos() {
 function setGeoPos(geopos) {
     now.setLatDegrees(geopos.coords.latitude);
     now.setLonDegrees(geopos.coords.longitude);
+    localStorage.setItem(
+        'geopos',
+        JSON.stringify({
+            latitude: geopos.coords.latitude,
+            longitude: geopos.coords.longitude
+        })
+    );
     set_user_obs();
     refresh();
 }
