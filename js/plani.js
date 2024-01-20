@@ -360,4 +360,19 @@ function getGeoPos() {
     navigator.geolocation.getCurrentPosition(setGeoPos);
 }
 
+var trackInterval = null;
+function track_button() {
+    if (!trackInterval) {
+        document.getElementById('user_track').value = '取消追踪';
+        now_button();
+        trackInterval = setInterval(function () {
+            now_button();
+        }, 1000);
+    } else {
+        document.getElementById('user_track').value = '追踪';
+        clearInterval(trackInterval);
+        trackInterval = null;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', getIPGeoPos, false);
