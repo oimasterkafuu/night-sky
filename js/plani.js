@@ -25,21 +25,21 @@ function draw_star(context, s) {
 function draw_planet(context, p) {
     draw_star(context, p);
     context.fillStyle = p.color;
-    context.font = '12px 宋体,宋体-简';
+    context.font = '20px 宋体,宋体-简';
     context.fillText(p.name, p.pos.x + 5, p.pos.y);
 }
 
 function draw_star_label(context, p) {
     context.fillStyle = '#888';
     context.strokeStyle = '#888';
-    context.font = '11px 宋体,宋体-简';
+    context.font = '18px 宋体,宋体-简';
     context.fillText(p.label, p.pos.x + 5, p.pos.y);
 }
 
 function draw_con_label(context, p) {
     context.fillStyle = '#789';
     context.strokeStyle = '#789';
-    context.font = '10px 宋体,宋体-简';
+    context.font = '17px 宋体,宋体-简';
     var s = p.name.toUpperCase();
     var w = context.measureText(s).width;
     context.fillText(s, p.pos.x - w / 2, p.pos.y);
@@ -60,7 +60,7 @@ function ellipse(context, cx, cy, rx, ry, filled) {
 function draw_dso(context, m) {
     context.fillStyle = m.color;
     context.strokeStyle = m.color;
-    context.font = '10px Courier New';
+    context.font = '17px Courier New';
     context.fillText(m.name, m.pos.x + m.offsetx, m.pos.y + m.offsety);
     if (m.catalog == 1 && m.id == 45) return;
     switch (m.type) {
@@ -117,7 +117,7 @@ function draw_moon(context) {
 
     context.globalCompositeOperation = 'lighter';
     context.fillStyle = '#FFF0E0';
-    context.font = '12px 宋体,宋体-简';
+    context.font = '20px 宋体,宋体-简';
     context.fillText(specialName, moon.pos.x + 8, moon.pos.y);
 }
 
@@ -163,13 +163,13 @@ function draw_sky(context, w, h) {
 
     /* ----- horizon labels */
     context.textBaseline = 'middle';
-    context.fillStyle = '#888';
-    context.font = '12px 宋体,宋体-简';
+    context.fillStyle = '#FFF0E0';
+    context.font = '30px 宋体,宋体-简';
 
-    context.fillText('北', (w - 10) / 2, 9);
-    context.fillText('南', (w - 10) / 2, h - 5);
-    context.fillText('东', 2, h / 2);
-    context.fillText('西', w - 14, h / 2 - 2);
+    context.fillText('北', (w - 10) / 2, 20);
+    context.fillText('南', (w - 10) / 2, h - 20);
+    context.fillText('东', 10, h / 2);
+    context.fillText('西', w - 35, h / 2);
 
     /* ---- stars */
     var len = star.length;
