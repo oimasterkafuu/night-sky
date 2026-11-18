@@ -1,0 +1,13 @@
+{
+  "name": "nsfz-observatory",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "npm run build && node scripts/preview.mjs",
+    "test": "npm run build && node --test"
+  },
+  "dependencies": { "astronomy-engine": "2.1.19" }
+}

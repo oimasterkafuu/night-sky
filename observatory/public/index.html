@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1120">
+  <meta name="description" content="南师附中 600 毫米反射望远镜观测助手。查询南京上空的观测目标，复制十进制赤经和赤纬。">
+  <title>观星台 · 南师附中</title>
+  <link rel="stylesheet" href="/style.css">
+  <script defer src="/astronomy.js"></script>
+  <script type="module" src="/app.mjs"></script>
+</head>
+<body>
+  <header class="bar">
+    <div class="shell bar-inner">
+      <a class="brand" href="/" aria-label="观星台首页"><span class="mark" aria-hidden="true">✦</span>观星台</a>
+      <div class="clock">
+        <div class="clock-line"><span id="clock-light" class="light"></span><span>北京时间</span><time id="clock-time">--:--:--</time></div>
+        <p id="clock-status">正在从服务器校时…</p>
+      </div>
+    </div>
+  </header>
+  <main class="shell">
+    <noscript><p class="notice">请开启 JavaScript 以同步时钟并计算天体坐标。</p></noscript>
+    <div id="startup-error" class="notice" role="alert" hidden></div>
+
+    <div id="home">
+      <section class="hero">
+        <div>
+          <p class="kicker">南师附中天文台</p>
+          <h1>此刻可观测</h1>
+          <p>南京鼓楼 · 600 毫米反射望远镜</p>
+        </div>
+        <div class="orbit" aria-hidden="true"><i></i><i></i><i></i><span>✦</span></div>
+      </section>
+
+      <div class="dashboard">
+        <section class="panel list-panel" aria-labelledby="targets-title">
+          <div class="panel-head">
+            <div><h2 id="targets-title">观测目标</h2><p id="list-summary">等待服务器校时</p></div>
+            <button id="show-all" class="quiet" type="button" aria-pressed="false">查看全部</button>
+          </div>
+          <div class="filters">
+            <label><span class="sr-only">天体类别</span><select id="kind">
+              <option value="">全部类别</option><option value="solar">月球与行星</option><option value="star">亮星</option><option value="cluster">星团</option><option value="nebula">星云</option><option value="galaxy">星系</option>
+            </select></label>
+            <label><span class="sr-only">搜索天体</span><input id="search" type="search" placeholder="搜索名称或编号" autocomplete="off"></label>
+          </div>
+          <p class="empty" id="empty">正在计算观测条件…</p>
+          <ul id="targets" class="targets"></ul>
+        </section>
+
+        <aside class="side">
+          <section class="panel context">
+            <h2>观测条件</h2>
+            <div class="kv"><span>本部观测站</span><span>察哈尔路 37 号</span></div>
+            <div class="kv"><span>太阳高度</span><strong id="sun-height">—</strong></div>
+            <div class="kv"><span>天光</span><strong id="twilight">—</strong></div>
+            <p class="hint">按天体高度、天光、日距和附近月光筛选。实际可见度还受云量、光污染和屋顶遮挡影响。</p>
+          </section>
+          <a class="panel shortcut" href="/?view=converter"><span>时分秒 / 度分秒换算</span><span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    </div>
+
+    <section id="detail" hidden>
+      <a class="back" href="/">← 观测目标</a>
+      <p id="detail-kind" class="kicker"></p>
+      <h1 id="detail-name"></h1>
+      <p id="detail-status" class="detail-status"></p>
+      <p id="detail-note" class="hint"></p>
+      <div id="solar-message" class="notice" hidden>太阳接近地平线或离目标过近。此时请勿用望远镜指向目标。</div>
+      <section class="panel coords" aria-labelledby="coordinate-title">
+        <div class="panel-head">
+          <div><h2 id="coordinate-title">望远镜输入</h2><p id="frame-description">站心视位置 · 当日真赤道与真春分点</p></div>
+          <label><span class="sr-only">坐标历元</span><select id="frame"><option value="live">视位置（当日）</option><option value="reference">J2000</option></select></label>
+        </div>
+        <p id="detail-wait" class="hint">正在同步服务器时钟…</p>
+        <div id="coordinate-content" hidden>
+          <div class="coordinate-grid">
+            <div class="value-card"><span>赤经 · 十进制小时</span><strong id="ra-hours">—</strong><button type="button" data-copy="ra-hours">复制</button></div>
+            <div class="value-card"><span>赤经 · 十进制度</span><strong id="ra-degrees">—</strong><button type="button" data-copy="ra-degrees">复制</button></div>
+            <div class="value-card"><span>赤纬 · 十进制度</span><strong id="dec-degrees">—</strong><button type="button" data-copy="dec-degrees">复制</button></div>
+          </div>
+          <p class="hint">按控制台要求选择赤经单位和坐标历元。</p>
+          <dl class="original"><div><dt>赤经 · 时分秒</dt><dd id="original-ra">—</dd></div><div><dt>赤纬 · 度分秒</dt><dd id="original-dec">—</dd></div></dl>
+          <p id="alt-az" class="hint"></p>
+        </div>
+      </section>
+      <section id="catalog-coords" class="panel context original-panel" hidden>
+        <h2>星表原始坐标 <small>J2000</small></h2>
+        <dl class="original"><div><dt>赤经</dt><dd id="catalog-ra"></dd></div><div><dt>赤纬</dt><dd id="catalog-dec"></dd></div></dl>
+      </section>
+    </section>
+
+    <section id="converter" hidden>
+      <a class="back" href="/">← 观测目标</a>
+      <h1>坐标换算</h1>
+      <form id="conversion" class="panel coords">
+        <div class="conversion-input">
+          <label>赤经 · 时分秒<input id="input-ra" placeholder="05:35:17.30" required autocomplete="off" spellcheck="false"></label>
+          <label>赤纬 · 度分秒<input id="input-dec" placeholder="−05:23:28.00" required autocomplete="off" spellcheck="false"></label>
+          <button class="primary" type="submit">换算</button>
+        </div>
+        <p id="conversion-error" class="error" role="alert" hidden></p>
+        <div id="conversion-result" class="coordinate-grid" hidden>
+          <div class="value-card"><span>赤经 · 十进制小时</span><strong id="conversion-ra-hours"></strong><button type="button" data-copy="conversion-ra-hours">复制</button></div>
+          <div class="value-card"><span>赤经 · 十进制度</span><strong id="conversion-ra-degrees"></strong><button type="button" data-copy="conversion-ra-degrees">复制</button></div>
+          <div class="value-card"><span>赤纬 · 十进制度</span><strong id="conversion-dec"></strong><button type="button" data-copy="conversion-dec">复制</button></div>
+        </div>
+      </form>
+    </section>
+    <div class="toast" id="toast" role="status" hidden></div>
+  </main>
+  <footer class="shell footer"><span>南师附中天文台 · 星空观测助手</span><a href="https://github.com/oimasterkafuu/night-sky/tree/master/observatory">源码与数据说明 ↗</a></footer>
+</body>
+</html>
